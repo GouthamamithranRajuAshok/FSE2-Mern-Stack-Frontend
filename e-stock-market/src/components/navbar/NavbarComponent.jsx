@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Button, Form, Nav, Navbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const NavBarComponent = () => {
-  const [companyCode, setCompanyCode] = useState();
+  const [companyCode, setCompanyCode] = useState("");
+  const navigate = useNavigate();
 
   const searchHandler = () => {
-    console.log(companyCode);
+    navigate("/SearchResult", { state: { companyCode: companyCode } });
   };
 
   return (
