@@ -1,6 +1,13 @@
-import { Nav, Navbar } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Form, Nav, Navbar } from "react-bootstrap";
 
 const NavBarComponent = () => {
+  const [companyCode, setCompanyCode] = useState();
+
+  const searchHandler = () => {
+    console.log(companyCode);
+  };
+
   return (
     <div>
       <Navbar expand="lg" bg="light">
@@ -14,6 +21,19 @@ const NavBarComponent = () => {
               <Nav.Link href="#">Company List</Nav.Link>
               <Nav.Link href="#">Stock List</Nav.Link>
             </Nav>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Enter company code"
+                className="me-2"
+                aria-label="search"
+                value={companyCode}
+                onChange={(e) => setCompanyCode(e.target.value)}
+              />
+              <Button variant="outline-dark" onClick={searchHandler}>
+                Search
+              </Button>
+            </Form>
           </Navbar.Collapse>
         </div>
       </Navbar>
