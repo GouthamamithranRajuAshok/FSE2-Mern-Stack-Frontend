@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import { getCompanyByCompanyCode } from "../../services/CompanyService";
 import "./CompanySearchComponent.css";
 
 const CompanySearch = () => {
@@ -9,8 +10,20 @@ const CompanySearch = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location);
-  });
+    const getCompanyDetails = async () => {
+      const response = await getCompanyByCompanyCode(
+        location.state.companyCode
+      );
+      console.log(response);
+      if (response != null) {
+        setSearchedCompany(() => response);
+      } else {
+        setSearchedCompany(() => {});
+        alert("Company is not available");
+      }
+    };
+    getCompanyDetails();
+  }, [location.state.companyCode]);
 
   return (
     <div>
@@ -24,21 +37,18 @@ const CompanySearch = () => {
               <th>CEO Name</th>
               <th>Turnover</th>
               <th>Official website</th>
-              <th>Stock</th>
             </tr>
           </thead>
           <tbody>
-            {searchedCompany?.length > 0 &&
-              searchedCompany.map((item, key) => (
-                <tr key={key}>
-                  <td>{item.companyCode}</td>
-                  <td>{item.companyName}</td>
-                  <td>{item.companyCEO}</td>
-                  <td>{item.turnOver}</td>
-                  <td>{item.companyWebsite}</td>
-                  <td>{item.stock}</td>
-                </tr>
-              ))}
+            {searchedCompany != null && (
+              <tr>
+                <td>{searchedCompany.companyCode}</td>
+                <td>{searchedCompany.companyName}</td>
+                <td>{searchedCompany.companyCEO}</td>
+                <td>{searchedCompany.turnOver}</td>
+                <td>{searchedCompany.companyWebsite}</td>
+              </tr>
+            )}
           </tbody>
         </Table>
       </Container>
