@@ -14,12 +14,11 @@ const CompanySearch = () => {
       const response = await getCompanyByCompanyCode(
         location.state.companyCode
       );
-      console.log(response);
       if (response != null) {
         setSearchedCompany(() => response);
       } else {
         setSearchedCompany(() => {});
-        alert("Company is not available");
+        alert("Company data not available");
       }
     };
     getCompanyDetails();
