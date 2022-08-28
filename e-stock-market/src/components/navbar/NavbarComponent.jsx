@@ -20,7 +20,7 @@ const NavBarComponent = () => {
             <Nav className="me-auto">
               <Nav.Link href="#">Home</Nav.Link>
               <Nav.Link href="#">Add Company</Nav.Link>
-              <Nav.Link href="#">Company List</Nav.Link>
+              <Nav.Link href="/CompanyList">Company List</Nav.Link>
               <Nav.Link href="#">Stock List</Nav.Link>
             </Nav>
             <Form className="d-flex">
