@@ -22,4 +22,16 @@ const getAllCompanies = async () => {
   }
 };
 
-export { getCompanyByCompanyCode, getAllCompanies };
+const addNewCompany = async (newCompany) => {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/market/company/register`,
+      newCompany
+    );
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getCompanyByCompanyCode, getAllCompanies, addNewCompany };

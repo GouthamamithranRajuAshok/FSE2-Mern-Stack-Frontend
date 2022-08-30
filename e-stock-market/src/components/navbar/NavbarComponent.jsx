@@ -19,7 +19,7 @@ const NavBarComponent = () => {
           <Navbar.Collapse id="stock-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#">Home</Nav.Link>
-              <Nav.Link href="#">Add Company</Nav.Link>
+              <Nav.Link href="/AddCompany">Add Company</Nav.Link>
               <Nav.Link href="/CompanyList">Company List</Nav.Link>
               <Nav.Link href="#">Stock List</Nav.Link>
             </Nav>
