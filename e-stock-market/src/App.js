@@ -4,6 +4,7 @@ import CompanyList from "./components/company-list/CompanyList";
 import CompanySearch from "./components/company-search/CompanySearchComponent";
 import CreateCompany from "./components/create-company/CreateCompany";
 import NavBarComponent from "./components/navbar/NavbarComponent";
+import StockDetails from "./components/stock-details/StockDetails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/SearchResult" element={<CompanySearch />} />
         <Route path="/CompanyList" element={<CompanyList />} />
         <Route path="/AddCompany" element={<CreateCompany />} />
+        <Route path="/StockDetails" element={<StockDetails />} />
       </Routes>
     </Router>
   );

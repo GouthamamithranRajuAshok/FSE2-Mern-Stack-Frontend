@@ -1,0 +1,10 @@
+h2 {
+  text-align: center;
+  padding-top: 50px;
+}
+label {
+  font-weight: bolder;
+}
+button.button-proceed {
+  margin-top: 33px;
+}
