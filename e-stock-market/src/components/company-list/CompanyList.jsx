@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Table, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { getAllCompanies } from "../../services/CompanyService";
 
 const CompanyList = () => {
   const [companyList, setCompanyList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getAllCompanyDetails = async () => {
@@ -15,6 +17,10 @@ const CompanyList = () => {
     };
     getAllCompanyDetails();
   }, []);
+
+  const addStockHandler = (companyCode) => {
+    navigate(`/AddStock/${companyCode}`);
+  };
 
   return (
     <div>
@@ -39,6 +45,14 @@ const CompanyList = () => {
                   <td>{item.companyCEO}</td>
                   <td>{item.turnOver}</td>
                   <td>{item.companyWebsite}</td>
+                  <td>
+                    <Button
+                      variant="outline-dark"
+                      onClick={() => addStockHandler(item.companyCode)}
+                    >
+                      Add Stock
+                    </Button>
+                  </td>
                 </tr>
               ))}
           </tbody>

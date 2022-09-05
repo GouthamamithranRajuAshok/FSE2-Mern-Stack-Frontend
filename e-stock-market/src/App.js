@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddStockPrice from "./components/add-stock-price/AddStockPrice";
 import CompanyList from "./components/company-list/CompanyList";
 import CompanySearch from "./components/company-search/CompanySearchComponent";
 import CreateCompany from "./components/create-company/CreateCompany";
@@ -15,6 +16,7 @@ function App() {
         <Route path="/CompanyList" element={<CompanyList />} />
         <Route path="/AddCompany" element={<CreateCompany />} />
         <Route path="/StockDetails" element={<StockDetails />} />
+        <Route path="/AddStock/:companyCode" element={<AddStockPrice />} />
       </Routes>
     </Router>
   );

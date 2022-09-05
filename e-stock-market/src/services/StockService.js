@@ -11,4 +11,16 @@ const getStockPrices = async (companyCode, startDate, endDate) => {
   }
 };
 
-export { getStockPrices };
+const addStockByCompanyCode = async (companyCode, stockPrice) => {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/market/stock/add/${companyCode}`,
+      stockPrice
+    );
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getStockPrices, addStockByCompanyCode };
