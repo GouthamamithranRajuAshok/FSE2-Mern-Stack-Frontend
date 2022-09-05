@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Container, Table } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { Button, Container, Table } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getCompanyByCompanyCode } from "../../services/CompanyService";
 import "./CompanySearchComponent.css";
 
 const CompanySearch = () => {
   const [searchedCompany, setSearchedCompany] = useState({});
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCompanyDetails = async () => {
@@ -23,6 +24,10 @@ const CompanySearch = () => {
     };
     getCompanyDetails();
   }, [location.state.companyCode]);
+
+  const addStockHandler = () => {
+    navigate(`/AddStock/${searchedCompany.companyCode}`);
+  };
 
   return (
     <div>
@@ -46,6 +51,14 @@ const CompanySearch = () => {
                 <td>{searchedCompany.companyCEO}</td>
                 <td>{searchedCompany.turnOver}</td>
                 <td>{searchedCompany.companyWebsite}</td>
+                <td>
+                  <Button
+                    variant="outline-dark"
+                    onClick={() => addStockHandler(searchedCompany.companyCode)}
+                  >
+                    Add Stock
+                  </Button>
+                </td>
               </tr>
             )}
           </tbody>
