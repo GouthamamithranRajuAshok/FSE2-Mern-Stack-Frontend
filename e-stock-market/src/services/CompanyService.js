@@ -34,4 +34,20 @@ const addNewCompany = async (newCompany) => {
   }
 };
 
-export { getCompanyByCompanyCode, getAllCompanies, addNewCompany };
+const deleteCompany = async (companyCode) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_BASE_URL}/market/company/delete/${companyCode}`
+    );
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export {
+  getCompanyByCompanyCode,
+  getAllCompanies,
+  addNewCompany,
+  deleteCompany,
+};

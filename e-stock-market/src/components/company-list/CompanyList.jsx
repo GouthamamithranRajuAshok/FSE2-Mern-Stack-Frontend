@@ -2,24 +2,36 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { getAllCompanies } from "../../services/CompanyService";
+import { deleteCompany, getAllCompanies } from "../../services/CompanyService";
 
 const CompanyList = () => {
   const [companyList, setCompanyList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getAllCompanyDetails = async () => {
-      const response = await getAllCompanies();
-      if (response != null) {
-        setCompanyList(() => response);
-      }
-    };
     getAllCompanyDetails();
   }, []);
 
+  const getAllCompanyDetails = async () => {
+    const response = await getAllCompanies();
+    if (response != null) {
+      setCompanyList(() => response);
+    }
+  };
+
   const addStockHandler = (companyCode) => {
     navigate(`/AddStock/${companyCode}`);
+  };
+
+  const deleteCompanyHandler = async (companyCode) => {
+    if (window.confirm("Are you sure you want to delete the company?")) {
+      const response = await deleteCompany(companyCode);
+      console.log(response);
+      if (response && response.companyCode === companyCode) {
+        alert(`Company ${companyCode} deleted successfully!`);
+        getAllCompanyDetails();
+      }
+    }
   };
 
   return (
@@ -53,6 +65,14 @@ const CompanyList = () => {
                       onClick={() => addStockHandler(item.companyCode)}
                     >
                       Add Stock
+                    </Button>
+                  </td>
+                  <td>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => deleteCompanyHandler(item.companyCode)}
+                    >
+                      Delete Company
                     </Button>
                   </td>
                 </tr>
