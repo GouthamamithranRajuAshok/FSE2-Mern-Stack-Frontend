@@ -19,9 +19,8 @@ const NavBarComponent = () => {
           <Navbar.Toggle aria-controls="stock-navbar-nav" />
           <Navbar.Collapse id="stock-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/AddCompany">Add Company</Nav.Link>
-              <Nav.Link href="/CompanyList">Company List</Nav.Link>
               <Nav.Link href="/StockDetails">Stocks</Nav.Link>
             </Nav>
             <Form className="d-flex">

@@ -12,6 +12,7 @@ function App() {
     <Router>
       <NavBarComponent />
       <Routes>
+        <Route path="/" element={<CompanyList />} />
         <Route path="/SearchResult" element={<CompanySearch />} />
         <Route path="/CompanyList" element={<CompanyList />} />
         <Route path="/AddCompany" element={<CreateCompany />} />
