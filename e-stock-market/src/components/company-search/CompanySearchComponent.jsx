@@ -6,7 +6,14 @@ import { getCompanyByCompanyCode } from "../../services/CompanyService";
 import "./CompanySearchComponent.css";
 
 const CompanySearch = () => {
-  const [searchedCompany, setSearchedCompany] = useState({});
+  const [searchedCompany, setSearchedCompany] = useState({
+    companyCode: "",
+    companyName: "",
+    companyCEO: "",
+    turnOver: 0,
+    companyWebsite: "",
+    stockPrice: [],
+  });
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -40,6 +47,7 @@ const CompanySearch = () => {
               <th>Company Name</th>
               <th>CEO Name</th>
               <th>Turnover</th>
+              <th>Stock Price</th>
               <th>Official website</th>
             </tr>
           </thead>
@@ -50,6 +58,7 @@ const CompanySearch = () => {
                 <td>{searchedCompany.companyName}</td>
                 <td>{searchedCompany.companyCEO}</td>
                 <td>{searchedCompany.turnOver}</td>
+                <td>{searchedCompany.stockPrice[0]?.stockPrice}</td>
                 <td>{searchedCompany.companyWebsite}</td>
                 <td>
                   <Button

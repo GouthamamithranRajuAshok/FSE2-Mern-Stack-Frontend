@@ -33,6 +33,7 @@ const CompanyList = () => {
               <th>Company Name</th>
               <th>CEO Name</th>
               <th>Turnover</th>
+              <th>Stock Price</th>
               <th>Official website</th>
             </tr>
           </thead>
@@ -44,6 +45,7 @@ const CompanyList = () => {
                   <td>{item.companyName}</td>
                   <td>{item.companyCEO}</td>
                   <td>{item.turnOver}</td>
+                  <td>{item.stockPrice[0]?.stockPrice}</td>
                   <td>{item.companyWebsite}</td>
                   <td>
                     <Button

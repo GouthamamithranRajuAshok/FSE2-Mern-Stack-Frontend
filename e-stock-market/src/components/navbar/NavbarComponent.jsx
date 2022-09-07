@@ -6,7 +6,8 @@ const NavBarComponent = () => {
   const [companyCode, setCompanyCode] = useState("");
   const navigate = useNavigate();
 
-  const searchHandler = () => {
+  const searchHandler = (e) => {
+    e.preventDefault();
     navigate("/SearchResult", { state: { companyCode: companyCode } });
   };
 
